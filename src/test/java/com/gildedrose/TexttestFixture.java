@@ -5,7 +5,11 @@ import java.io.PrintStream;
 
 public class TextTestFixture {
     public static void main(String[] args) {
-//        PrintStream printStream = System.out;
+        String baseline = getBaseline();
+        System.out.println(baseline);
+    }
+
+    public static String getBaseline() {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(out);
         printStream.println("OMGHAI!");
@@ -25,10 +29,7 @@ public class TextTestFixture {
 
         GildedRose app = new GildedRose(items);
 
-        int days = 2;
-        if (args.length > 0) {
-            days = Integer.parseInt(args[0]) + 1;
-        }
+        int days = 3;
 
         for (int i = 0; i < days; i++) {
             printStream.println("-------- day " + i + " --------");
@@ -39,7 +40,7 @@ public class TextTestFixture {
             printStream.println();
             app.updateQuality();
         }
-        System.out.println(out.toString());
+        return out.toString();
     }
 
 }
